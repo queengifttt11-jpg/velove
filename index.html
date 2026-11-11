@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>B’daysayanggggg</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(
+        180deg,
+        #e9ddff 0%,
+        #f2ebff 50%,
+        #faf7ff 100%
+    );
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    min-height:100vh;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 25px;
+    text-align:center;
+    position:relative;
+    animation:fade .5s ease;
+}
+
+.page.active{
+    display:flex;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* =========================
+   TITLE
+========================= */
+
+h1{
+    font-size:3rem;
+    line-height:1.3;
+    color:#31384f;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.15rem;
+    line-height:1.9;
+    color:#555;
+    max-width:650px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    margin-top:30px;
+    padding:14px 35px;
+    border:none;
+    border-radius:50px;
+    background:#31384f;
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.12);
+}
+
+button:hover{
+    transform:translateY(-3px);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+/* =========================
+   GIF
+========================= */
+
+.gif{
+    width:260px;
+    max-width:80%;
+    margin-bottom:25px;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo{
+    width:360px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.12);
+    margin-bottom:25px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+    padding:15px;
+    scroll-snap-type:x mandatory;
+    width:100%;
+    justify-content:center;
+}
+
+.gallery::-webkit-scrollbar{
+    display:none;
+}
+
+.gallery img{
+    width:360px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    scroll-snap-align:center;
+    flex-shrink:0;
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.12);
+}
+
+/* =========================
+   FLOATING EMOJI
+========================= */
+
+.floating{
+    position:fixed;
+    top:-50px;
+    font-size:25px;
+    pointer-events:none;
+    z-index:999;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:
+            translateY(-100px)
+            translateX(0px)
+            rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(30px)
+            rotate(180deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(-30px)
+            rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+/* =========================
+   PAGE 8
+========================= */
+
+#page8{
+    justify-content:flex-start;
+    padding-top:60px;
+    overflow-y:auto;
+}
+
+.birthday-letter{
+    width:100%;
+    max-width:800px;
+}
+
+.final-title{
+    font-size:2.2rem;
+    line-height:1.4;
+    color:#31384f;
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+.letter-content{
+    border-left:4px solid #888;
+    padding-left:20px;
+    margin-top:20px;
+}
+
+#typing-text{
+    text-align:left;
+    white-space:pre-line;
+    font-size:1.2rem;
+    line-height:2;
+    color:#555;
+    font-weight:500;
+}
+
+.cursor{
+    display:inline-block;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:0;
+    }
+
+}
+
+/* =========================
+   PAGE 9 - FOTO PORTRAIT PANJANG
+========================= */
+
+#page9{
+    justify-content:center;
+    padding:50px 20px;
+    min-height:100vh;
+}
+
+.portrait-title{
+    font-size:2rem;
+    color:#31384f;
+    margin-bottom:10px;
+    line-height:1.4;
+}
+
+.portrait-subtitle{
+    font-size:1rem;
+    color:#777;
+    margin-bottom:25px;
+}
+
+
+/* =========================
+   FOTO PORTRAIT PANJANG
+========================= */
+
+.portrait-frame{
+
+    /* LEBIH PANJANG DARIPADA LEBAR */
+    width:min(78vw, 400px);
+
+    height:min(78vh, 680px);
+
+    padding:8px;
+
+    background:rgba(255,255,255,.65);
+
+    border-radius:28px;
+
+    box-shadow:
+        0 18px 40px rgba(49,56,79,.18);
+
+    animation:
+        portraitAppear 1s ease,
+        portraitFloat 4s ease-in-out infinite 1s;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+
+/* FOTO */
+
+.portrait-frame img{
+
+    width:100%;
+    height:100%;
+
+    /*
+    CONTAIN = FOTO TIDAK TERPOTONG
+    */
+
+    object-fit:contain;
+
+    object-position:center;
+
+    border-radius:22px;
+
+    display:block;
+}
+
+
+/* =========================
+   ANIMASI FOTO
+========================= */
+
+@keyframes portraitAppear{
+
+    from{
+        opacity:0;
+        transform:scale(.88);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes portraitFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+}
+
+
+/* =========================
+   CAPTION
+========================= */
+
+.portrait-caption{
+
+    margin-top:22px;
+
+    font-size:1.05rem;
+
+    color:#555;
+
+    max-width:420px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .page{
+        padding:35px 20px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    p{
+        font-size:1rem;
+        line-height:1.8;
+    }
+
+    button{
+        font-size:15px;
+        padding:12px 28px;
+    }
+
+    .gif{
+        width:180px;
+    }
+
+
+    /* PAGE 9 */
+
+    .portrait-title{
+        font-size:1.55rem;
+    }
+
+    .portrait-subtitle{
+        font-size:.9rem;
+        margin-bottom:20px;
+    }
+
+
+    .portrait-frame{
+
+        /*
+        LEBAR LEBIH KECIL
+        TINGGI LEBIH PANJANG
+        */
+
+        width:82vw;
+
+        height:72vh;
+
+        max-height:620px;
+
+        padding:7px;
+
+        border-radius:24px;
+    }
+
+
+    .portrait-frame img{
+        border-radius:18px;
+    }
+
+
+    .portrait-caption{
+        font-size:.95rem;
+        line-height:1.6;
+        padding:0 10px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:390px){
+
+    h1{
+        font-size:1.7rem;
+    }
+
+    button{
+        font-size:14px;
+        padding:10px 24px;
+    }
+
+    .final-title{
+        font-size:1.4rem;
+    }
+
+    #typing-text{
+        font-size:.95rem;
+    }
+
+
+    /* PAGE 9 SMALL PHONE */
+
+    .portrait-title{
+        font-size:1.4rem;
+    }
+
+    .portrait-subtitle{
+        font-size:.85rem;
+    }
+
+    .portrait-frame{
+
+        width:84vw;
+
+        /*
+        INI YANG MEMBUAT
+        FOTO TERLIHAT PANJANG
+        */
+
+        height:70vh;
+
+        max-height:580px;
+
+        padding:6px;
+
+        border-radius:22px;
+    }
+
+    .portrait-frame img{
+        border-radius:17px;
+    }
+
+    .portrait-caption{
+        font-size:.9rem;
+    }
+
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loading-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        180deg,
+        #e9ddff 0%,
+        #f2ebff 50%,
+        #faf7ff 100%
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loading-card{
+    text-align:center;
+    padding:30px;
+}
+
+.loading-gif{
+    width:180px;
+    margin-bottom:20px;
+}
+
+.loading-card h2{
+    color:#31384f;
+    margin-bottom:15px;
+}
+
+.loading-card p{
+    margin-bottom:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .page{
+        padding:35px 20px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    p{
+        font-size:1rem;
+        line-height:1.8;
+    }
+
+    button{
+        font-size:15px;
+        padding:12px 28px;
+    }
+
+    .gif{
+        width:180px;
+    }
+
+    .photo{
+        width:280px;
+        height:170px;
+        object-fit:cover;
+    }
+
+    .gallery{
+        gap:10px;
+    }
+
+    .gallery img{
+        width:280px;
+        height:170px;
+        object-fit:cover;
+    }
+
+    .final-title{
+        font-size:1.6rem;
+    }
+
+    .letter-content{
+        padding-left:15px;
+    }
+
+    #typing-text{
+        font-size:1rem;
+        line-height:1.9;
+    }
+
+    /* PAGE 9 MOBILE */
+
+    .portrait-title{
+        font-size:1.55rem;
+    }
+
+    .portrait-subtitle{
+        font-size:.9rem;
+        margin-bottom:20px;
+    }
+
+    .portrait-frame{
+        width:82vw;
+        height:68vh;
+        max-height:600px;
+        padding:7px;
+        border-radius:24px;
+    }
+
+    .portrait-frame img{
+        border-radius:18px;
+    }
+
+    .portrait-caption{
+        font-size:.95rem;
+        line-height:1.6;
+        padding:0 10px;
+    }
+
+}
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:390px){
+
+    h1{
+        font-size:1.7rem;
+    }
+
+    button{
+        font-size:14px;
+        padding:10px 24px;
+    }
+
+    .final-title{
+        font-size:1.4rem;
+    }
+
+    #typing-text{
+        font-size:.95rem;
+    }
+
+    /* SMALL PHONE PAGE 9 */
+
+    .portrait-title{
+        font-size:1.4rem;
+    }
+
+    .portrait-frame{
+        width:86vw;
+        height:64vh;
+        max-height:540px;
+    }
+
+    .portrait-caption{
+        font-size:.9rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     MUSIK
+========================= -->
+
+<audio id="bgMusic" loop>
+    <source src="birthday.mp3" type="audio/mp3">
+</audio>
+
+
+<!-- =========================
+     LOADING SCREEN
+========================= -->
+
+<div id="loading-screen">
+
+    <div class="loading-card">
+
+        <img src="icon.gif" class="loading-gif">
+
+        <p>
+            something special is waiting for you...
+        </p>
+
+        <button onclick="startWebsite()">
+            open >
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PAGE 1
+========================= -->
+
+<div class="page active" id="page1">
+
+    <img class="gif" src="icon1.gif">
+
+    <h1>
+        HAPPYY BIRTHDAYY <br>
+        GANTENGG SAYANGG!!!<br>
+        ૮(˶ᵔ ᵕ ᵔ˶)ა
+    </h1>
+
+    <p>
+        there's more waiting....<br>
+        click to find out ✨
+    </p>
+
+    <button onclick="nextPage(2)">
+        next &lt;3
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 2
+========================= -->
+
+<div class="page" id="page2">
+
+    <img class="gif" src="icon2.gif">
+
+    <p>
+        sayang udah berusaha lebih baik
+        untuk setiap taunnya ya.
+    </p>
+
+    <p>
+        sayangkuu keren cekalii,
+        happy birthday
+    </p>
+
+    <button onclick="nextPage(3)">
+        next &lt;3
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<div class="page" id="page3">
+
+    <img class="gif" src="icon3.gif">
+
+    <p>
+        makin tambah umur makin ganteng
+        aja nii cowokuu
+    </p>
+
+    <button onclick="nextPage(4)">
+        &lt;3
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 4
+========================= -->
+
+<div class="page" id="page4">
+
+    <img class="gif" src="icon4.gif">
+
+    <p>
+        okee ini terakhir yaa gantengkuu,
+        aku buatin sesuatu untuk birthday nya
+        sayang di baca pelan pelan aja ya sayangkuu
+    </p>
+
+    <button onclick="nextPage(5)">
+        ♡
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 5
+========================= -->
+
+<div class="page" id="page5">
+
+    <img class="gif" src="icon5.gif">
+
+    <p>
+        makasi yaa udah hadir di hidup aku.
+        makasii udah sabar sama sifat aku,
+        udah nemenin aku, dengerin aku,
+        dengerin semua cerita-cerita aku,
+        dan selalu ada di saat aku butuh.
+        mungkin aku ga selalu bilang,
+        tapi aku bener-bener bersyukur
+        punya kamu.
+    </p>
+
+    <button onclick="nextPage(6)">
+        &lt;3
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 6
+========================= -->
+
+<div class="page" id="page6">
+
+    <p>
+        <strong>
+            aku cuma mau kamu tau.....
+        </strong>
+
+        <br><br>
+
+        kalau suatu hari kamu ngerasa cape
+        sama dunia, ngerasa gagal, atau
+        ngerasa sendirian, inget yaa..
+
+        <br><br>
+
+        ada aku yang bakal selalu dukung kamu
+        dan percaya sama kamu, bahkan di saat
+        kamu lagi ga percaya sama diri sendiri.
+    </p>
+
+    <button onclick="nextPage(7)">
+        ♡
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 7
+========================= -->
+
+<div class="page" id="page7">
+
+    <p>
+        <strong>
+            aku ga minta kamu jadi orang yang sempurna..
+        </strong>
+
+        <br><br>
+
+        aku cuma pengen kamu selalu sehat,
+        dan selalu punya alasan buat tersenyum.
+        karena lihat kamu bahagia,
+        itu juga bikin aku ikut bahagia.
+    </p>
+
+    <button onclick="nextPage(8)">
+        ♡
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 8
+========================= -->
+
+<div class="page" id="page8">
+
+    <div class="birthday-letter">
+
+        <h1 class="final-title">
+            🎀 HAPPYY <br>
+            BIRTHDAYY SAYANGG <br>
+            ₍˶ᵔ ᵕ ᵔ˶₎♡
+        </h1>
+
+        <div class="letter-content">
+
+            <p id="typing-text"></p>
+
+        </div>
+
+        <button onclick="nextPage(9)">
+            ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PAGE 9
+     FOTO PORTRAIT BESAR
+========================= -->
+
+<div class="page" id="page9">
+
+    <h1 class="portrait-title">
+        one more thing... ♡
+    </h1>
+    
+    <div class="portrait-frame">
+
+        <!--
+        GANTI "foto-portrait.jpg"
+        DENGAN NAMA FILE FOTO KAMU
+        -->
+
+        <img
+            src="foto1.jpg"
+            alt="Foto portrait sayang"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   BIRTHDAY MESSAGE
+========================= */
+
+const birthdayMessage = `Happy birthday, my lovee 🤍
+
+Hari ini spesial banget, karena hari ini adalah hari lahirnya seseorang yang jadi bagian penting di hidup aku. Dari yang awalnya biasa aja, sampai sekarang kmu jadi orang yang selalu aku cari setiap hari.
+
+maacii yya udah sabar ngadepin aku, yang kadang overthinking kadang susah dimengerti.. tapi kamu tetap stay. Itu berarti banget buat aku.
+
+sayangg udah jadi tempat aku pulang tempat aku cerita, dan orang yang selalu aku butuhin bahkan di hari paling capek sekalipun.
+
+Di umur sayang sekarang aku harapp kamu selalu sehat, bahagia, dan semua mimpi kamu bisa tercapai satu per satu
+dan akuu harap, akuu masih ada di setiap proses itu, nemenin sayangg.
+
+Happy birthday, sayanggg 
+
+thank you for choosing me 💗`;
+
+
+/* =========================
+   TYPING EFFECT
+========================= */
+
+let typingStarted = false;
+
+function startTyping(){
+
+    if(typingStarted) return;
+
+    typingStarted = true;
+
+    const target =
+        document.getElementById("typing-text");
+
+    let i = 0;
+
+    function type(){
+
+        if(i < birthdayMessage.length){
+
+            target.innerHTML =
+                birthdayMessage.substring(0,i+1) +
+                '<span class="cursor">|</span>';
+
+            i++;
+
+            setTimeout(type,40);
+
+        }else{
+
+            target.innerHTML =
+                birthdayMessage;
+
+        }
+
+    }
+
+    type();
+
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function nextPage(page){
+
+    document
+        .querySelectorAll('.page')
+        .forEach(p => {
+            p.classList.remove('active');
+        });
+
+    const selectedPage =
+        document.getElementById('page' + page);
+
+    selectedPage.classList.add('active');
+
+    /*
+    Scroll kembali ke bagian atas
+    setiap pindah page agar user
+    tidak mulai dari posisi sebelumnya.
+    */
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    /*
+    Jalankan musik
+    */
+
+    document
+        .getElementById("bgMusic")
+        .play()
+        .catch(()=>{});
+
+    /*
+    Jalankan typing ketika masuk Page 8
+    */
+
+    if(page === 8){
+
+        setTimeout(()=>{
+            startTyping();
+        },500);
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING EMOJI
+========================= */
+
+function createEmoji(){
+
+    const emojis = ["💗","🤍"];
+
+    const emoji =
+        document.createElement("div");
+
+    emoji.classList.add("floating");
+
+    emoji.innerHTML =
+        emojis[
+            Math.floor(
+                Math.random()*emojis.length
+            )
+        ];
+
+    emoji.style.left =
+        Math.random()*100 + "vw";
+
+    emoji.style.fontSize =
+        (Math.random()*15 + 20) + "px";
+
+    emoji.style.animationDuration =
+        (Math.random()*4 + 6) + "s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(()=>{
+        emoji.remove();
+    },10000);
+
+}
+
+setInterval(createEmoji,300);
+
+
+/* =========================
+   START WEBSITE
+========================= */
+
+function startWebsite(){
+
+    const music =
+        document.getElementById("bgMusic");
+
+    music.play().catch(()=>{});
+
+    document
+        .getElementById("loading-screen")
+        .style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
